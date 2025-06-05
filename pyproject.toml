@@ -1,0 +1,26 @@
+[project]
+name = "boggoms-diagnostic"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gerhard le Rouxe",email = "gerhardlr@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "redis (>=6.2.0,<7.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "*", from="api"}]
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.0"
+black = "^25.1.0"
+flake8 = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
