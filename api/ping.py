@@ -1,19 +1,14 @@
 import json
-import os
-from datetime import datetime, timezone
 from typing import Dict, Any
-import redis
+
 
 from _types import VercelRequest
-
-redis_url = os.environ["REDIS_URL"]
-r = redis.from_url(redis_url)
+from .redis_db import ping_db
 
 
 def handler(request: VercelRequest) -> Dict[str, Any]:
-    timestamp = datetime.now(timezone.utc).isoformat()
-    r.lpush("ping_log", timestamp)
 
+    timestamp = ping_db()
     return {
         "statusCode": 200,
         "body": json.dumps({
