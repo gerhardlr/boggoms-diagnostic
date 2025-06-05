@@ -1,7 +1,7 @@
 [project]
 name = "boggoms-diagnostic"
 version = "0.1.0"
-description = ""
+description = "api for running event hooks for boggoms site"
 authors = [
     {name = "Gerhard le Rouxe",email = "gerhardlr@gmail.com"}
 ]
@@ -17,6 +17,8 @@ packages = [{include = "*", from="api"}]
 pytest = "^8.4.0"
 black = "^25.1.0"
 flake8 = "^7.2.0"
+pre-commit = "^4.2.0"
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

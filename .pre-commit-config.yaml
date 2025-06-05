@@ -1,4 +1,6 @@
-hooks:
--   id: poetry-export
-    args: ["-f", "requirements.txt"]
-    verbose: true
+repos:
+-   repo: https://github.com/python-poetry/poetry
+    rev: '2.1.3'  # add version here
+    hooks:
+    -   id: poetry-lock
+    -   id: poetry-export
