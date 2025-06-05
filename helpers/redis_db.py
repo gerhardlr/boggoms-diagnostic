@@ -2,8 +2,7 @@ import os
 from datetime import datetime, timezone
 import redis
 
-redis_url = os.environ["REDIS_URL"]
-password = os.environ["REDIS_PASSWORD"]
+password = os.getenv("REDIS_PASSWORD")
 redis_db = redis.Redis(
     host='aware-javelin-17967.upstash.io',
     port=6379,
