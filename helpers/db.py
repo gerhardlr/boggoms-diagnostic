@@ -12,7 +12,8 @@ logger = logging_config.getLogger(__name__)
 class DBImpl(DB):
 
     def __init__(self):
-        password = os.getenv("REDIS_PASSWORD")
+        # s.getenv("REDIS_PASSWORD")
+        password = "AUnnAAIjcDFkM2NlMGJhYmEyNjI0MDIwYTMxYjNhMGU4NGU1N2NjNnAxMA"
         redis_host = os.getenv("REDIS_HOST", 'model-mastiff-18919.upstash.io')
         self._credentials = (password, redis_host)
         self._redis_db = redis.Redis(
