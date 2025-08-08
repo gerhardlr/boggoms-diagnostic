@@ -1,4 +1,4 @@
 
-from .subscribers.ping_subscriber import PingSubscriber
+from ._subscribers.handle_request_subscriber import HandleRequestSubscriberPerSource
 
-pingSubscriber = PingSubscriber()
+handleRequestSubscriber = HandleRequestSubscriberPerSource()

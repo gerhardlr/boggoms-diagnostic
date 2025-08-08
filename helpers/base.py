@@ -5,7 +5,7 @@ from typing import Any
 class Subscriber:
 
     @abc.abstractmethod
-    def push_event(self, event):
+    def push_event(self, event: Any):
         """"""
 
 
@@ -28,4 +28,8 @@ class DB:
 
     @abc.abstractmethod
     def ping(self) -> Any:
+        """"""
+
+    @abc.abstractmethod
+    def inc(self, key: str):
         """"""
