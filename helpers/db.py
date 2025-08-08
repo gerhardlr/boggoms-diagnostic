@@ -1,9 +1,12 @@
+from .base import DB
 import os
 from datetime import datetime, timezone
 from typing import Any
 import redis
+from .logging_config import get_logging_config
 
-from .base import DB
+logging_config = get_logging_config()
+logger = logging_config.getLogger(__name__)
 
 
 class DBImpl(DB):
@@ -22,7 +25,10 @@ class DBImpl(DB):
         self._redis_db.lpush(event_name, event)
 
     def ping(self):
-        return self._redis_db.ping()
+        try:
+            return self._redis_db.ping()
+        except Exception as e:
+            logger.exception(e)
 
 
 def get_db():
