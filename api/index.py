@@ -49,5 +49,5 @@ def get_event():
 def get_event_root():
     db = get_db()
     if result := db.ping():
-        logger.info(f'DB is available with ping result: {result}')
+        return {"message": f'DB is available with ping result: {result}'}
     return {"warning": f'DB is not available'}

@@ -14,6 +14,7 @@ class DBImpl(DB):
     def __init__(self):
         password = os.getenv("REDIS_PASSWORD")
         redis_host = os.getenv("REDIS_HOST", 'model-mastiff-18919.upstash.io')
+        self._credentials = (password, redis_host)
         self._redis_db = redis.Redis(
             host=redis_host,
             port=6379,
@@ -26,9 +27,11 @@ class DBImpl(DB):
 
     def ping(self):
         try:
+            # logger.info(self._credentials)
             return self._redis_db.ping()
         except Exception as e:
             logger.exception(e)
+            logger.info(self._credentials)
 
 
 def get_db():
