@@ -10,7 +10,7 @@ class DBImpl(DB):
 
     def __init__(self):
         password = os.getenv("REDIS_PASSWORD")
-        redis_host = os.getenv("REDIS_HOST", 'aware-javelin-17967.upstash.io')
+        redis_host = os.getenv("REDIS_HOST", 'model-mastiff-18919.upstash.io')
         self._redis_db = redis.Redis(
             host=redis_host,
             port=6379,
@@ -20,6 +20,9 @@ class DBImpl(DB):
 
     def push_event(self, event_name: str, event: Any):
         self._redis_db.lpush(event_name, event)
+
+    def ping(self):
+        return self._redis_db.ping()
 
 
 def get_db():

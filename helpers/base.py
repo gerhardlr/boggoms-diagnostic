@@ -25,3 +25,7 @@ class DB:
     @abc.abstractmethod
     def push_event(self, event_name: str, event: Any):
         """"""
+
+    @abc.abstractmethod
+    def ping(self) -> Any:
+        """"""
