@@ -27,6 +27,10 @@ class DB:
         """"""
 
     @abc.abstractmethod
+    def append_to_set(self, set_name, value: str):
+        """"""
+
+    @abc.abstractmethod
     def ping(self) -> Any:
         """"""
 

@@ -24,4 +24,6 @@ class HandleRequestSubscriberPerSource(Subscriber):
         })
         db.inc(f'{event["source"]}_count')
         db.inc(f'{event["path"]}_count')
+        db.append_to_set("sources", event["source"])
+        db.append_to_set("paths", event["path"])
         logger.info(f"handled event for HandleRequestSubscriberPerSource")

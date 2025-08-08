@@ -31,6 +31,9 @@ class DBImpl(DB):
     def inc(self, key: str):
         self._redis_db.incr(key)
 
+    def append_to_set(self, set_name: str, value: str):
+        self._redis_db.sadd(set_name, value)
+
     def ping(self):
         try:
             # logger.info(self._credentials)
