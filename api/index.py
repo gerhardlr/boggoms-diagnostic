@@ -40,14 +40,14 @@ def post_event(event: Event):
 @app.get("/api/")
 def get_event():
     db = get_db()
-    result = db.ping()
-    # logger.info()
-    return {"message": f'DB is available with ping result: {result}'}
+    if result := db.ping():
+        return {"message": f'DB is available with ping result: {result}'}
+    return {"warning": f'DB is not available'}
 
 
 @app.get("/")
 def get_event_root():
     db = get_db()
-    result = db.ping()
-    logger.info(f'DB is available with ping result: {result}')
-    return {"message": f'DB is available with ping result: {result}'}
+    if result := db.ping():
+        logger.info(f'DB is available with ping result: {result}')
+    return {"warning": f'DB is not available'}
