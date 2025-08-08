@@ -46,9 +46,9 @@ def get_event():
     return {"message": f'DB is available with ping result: {result}'}
 
 
-@app.get("/")
-def get_event_root():
-    db = get_db()
-    result = db.ping()
+# @app.get("/")
+# def get_event_root():
+#    db = get_db()
+#    result = db.ping()
     # logger.info(f'DB is available with ping result: {result}')
-    return {"message": f'DB is available with ping result: {result}'}
+#    return {"message": f'DB is available with ping result: {result}'}
