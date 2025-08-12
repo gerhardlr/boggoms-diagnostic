@@ -3,9 +3,10 @@ from typing import Generic, TypeVar
 from unittest.mock import Mock
 
 import pytest
-from helpers.db import set_mock
+from helpers.db import set_mock, get_db
 from helpers import get_root
 from helpers.data_types import Event
+from helpers.summary_page import get_info
 
 
 def test2():
@@ -35,3 +36,8 @@ def test_request_data(dry_run: Mock):
     root = get_root()
     root.push(event)
     foo = dry_run
+
+
+def test_read_db():
+    info = get_info()
+    foo = 'bar'

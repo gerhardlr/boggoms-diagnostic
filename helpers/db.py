@@ -20,6 +20,7 @@ class DBImpl(DB):
             host=redis_host,
             port=6379,
             password=password,
+            decode_responses=True,
             ssl=True
         )
 
@@ -34,6 +35,9 @@ class DBImpl(DB):
     def append_to_set(self, set_name: str, value: str):
         self._redis_db.sadd(set_name, value)
 
+    def get_set(self, set_name: str):
+        return self._redis_db.smembers(set_name)
+
     def ping(self):
         try:
             # logger.info(self._credentials)
@@ -41,6 +45,9 @@ class DBImpl(DB):
         except Exception as e:
             logger.exception(e)
             logger.info(self._credentials)
+
+    def get(self, key: str):
+        return self._redis_db.get(key)
 
 
 _mock_db = None
