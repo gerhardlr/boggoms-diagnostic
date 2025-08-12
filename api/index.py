@@ -25,15 +25,7 @@ def post_event(event: Event):
     return root.push(event)
 
 
-@app.get("/api/")
-def get_event():
-    db = get_db()
-    if result := db.ping():
-        return {"message": f'DB is available with ping result: {result}'}
-    return {"warning": f'DB is not available'}
-
-
-@app.get("/api/metrics/", response_class=HTMLResponse)
+@app.get("/api/", response_class=HTMLResponse)
 def get_event_root(request: Request):
     db = get_db()
     if result := db.ping():
