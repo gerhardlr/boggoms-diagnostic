@@ -1,12 +1,8 @@
 {
-    "env": {
-        "REDIS_URL": "aware-javelin-17967.upstash.io",
-        "REDIS_PASSWORD": "AUYvAAIjcDE5ZjM0ODIxODk0MDk0M2FiOGUzOTIxNTNjYjFiZWIxM3AxMA"
-    },
     "redirects": [
         {
             "source": "/",
-            "destination": "/api"
+            "destination": "/api/"
         }
     ]
 }

@@ -33,7 +33,7 @@ def get_event():
     return {"warning": f'DB is not available'}
 
 
-@app.get("/metrics", response_class=HTMLResponse)
+@app.get("/api/metrics/", response_class=HTMLResponse)
 def get_event_root(request: Request):
     db = get_db()
     if result := db.ping():
