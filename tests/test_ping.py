@@ -18,18 +18,18 @@ def fxt_dry_run() -> Mock:
     return set_mock()
 
 
-@pytest.mark.usefixtures("dry_run")
+# @pytest.mark.usefixtures("dry_run")
 def test_request_data(dry_run: Mock):
     event_data = {
-        "id": "01K2531CK4XXSZPFHR6TYNTD11",
+        "id": "01K2FJFSVVBC8VHY3C85Q1HDDB",
         "name": "boggoms-request",
         "data": {
-                "path": "/",
-                "source": "41.116.156.182",
-                "timestamp": 1754665103971,
-                "type_id": "RequestData"
+            "path": "/",
+            "source": "64.23.243.66",
+            "timestamp": 1755016849275,
+            "type_id": "RequestData"
         },
-        "ts": 1754665103972
+        "ts": 1755016849275
     }
     event = Event(**event_data)
     root = get_root()

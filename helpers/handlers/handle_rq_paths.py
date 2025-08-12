@@ -9,7 +9,7 @@ class StoreRequestPath(base.Consumer[request_path.Data]):
     def push_event(self, event: request_path.Data):
         db = get_db()
         db.push_event(event.name, event.data)
-        db.inc(event.name)
+        db.inc(f'{event.name}_count')
         db.append_to_set("paths", event.name)
 
 

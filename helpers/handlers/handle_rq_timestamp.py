@@ -13,7 +13,7 @@ class StoreRequestTimeStamp(base.Consumer[timestamp.DataType]):
         date_str = datetime.fromtimestamp(
             int(event.timestamp)/1000).date().isoformat()
         db.push_event(date_str, event.data)
-        db.inc(date_str)
+        db.inc(f'{date_str}_count')
         db.append_to_set("dates", date_str)
 
 

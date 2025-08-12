@@ -9,7 +9,7 @@ class StoreRequesSource(base.Consumer[request_source.DataType]):
     def push_event(self, event: request_source.DataType):
         db = get_db()
         db.push_event(event.name, event.data)
-        db.inc(event.name)
+        db.inc(f'{event.name}_count')
         db.append_to_set("sources", event.name)
 
 
