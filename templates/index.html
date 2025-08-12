@@ -6,8 +6,21 @@
 </head>
 <body>
     <h1>Boggoms Website Metrics</h1>
+
+    <h2>Paths</h2>
     <div>
-        {{ plot_html | safe }}
+        {{ plot_paths | safe }}
+    </div>
+
+    <h2>Sources</h2>
+    <div>
+        {{ plot_sources | safe }}
+    </div>
+
+    <h2>Dates</h2>
+    <div>
+        {{ plot_dates | safe }}
     </div>
 </body>
 </html>
+

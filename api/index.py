@@ -37,9 +37,14 @@ def get_event():
 def get_event_root(request: Request):
     db = get_db()
     if result := db.ping():
-        plot_html = make_plot()
+        html_plots = make_plot()
         return templates.TemplateResponse(
             "index.html",
-            {"request": request, "plot_html": plot_html}
+            {
+                "request": request,
+                "plot_paths": html_plots.paths,
+                "plot_sources": html_plots.sources,
+                "plot_dates": html_plots.dates,
+            },
         )
     return {"warning": f'DB is not available'}
