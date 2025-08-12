@@ -43,7 +43,19 @@ class DBImpl(DB):
             logger.info(self._credentials)
 
 
+_mock_db = None
+
+
+def set_mock():
+    global _mock_db
+
+    _mock_db = Mock(spec=DB)
+    return _mock_db
+
+
 def get_db():
+    if _mock_db:
+        return _mock_db
     if os.getenv('DRY_RUN'):
         return Mock(spec=DB)
     return DBImpl()

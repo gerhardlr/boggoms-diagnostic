@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Literal, Optional, TypedDict
+from typing import Optional, TypedDict
 
 
 class AbstractData(TypedDict):

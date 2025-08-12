@@ -1,11 +1,5 @@
-from typing import Callable, ParamSpec, TypeVar, cast
-from functools import wraps
-from helpers.base import Subscriber
-from helpers.data_types import Event, AbstractData
 
-from typing import TypeVar, Callable, Type, ParamSpec
-from functools import wraps
-
+"""
 R = TypeVar("R")
 C = TypeVar("C", bound=AbstractData)
 T = TypeVar("T", bound=Subscriber)  # Specific class type for self\
@@ -25,3 +19,4 @@ def allocate(data_cls: Type[C]) -> Callable[[Callable[[T, C], R]], Callable[[T, 
                             return func(self, data)
         return wrapped
     return decorator
+"""

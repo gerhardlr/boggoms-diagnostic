@@ -1,15 +1,32 @@
-from .channel import Channel
-from .base import AbstractChannel
-from .setup import setup_channel
-from .logging_config import get_logging_config
+from typing import Type, TypeVar
+from . import base
+from .channel import get_channel
 
 
-logging_config = get_logging_config()
-logger = logging_config.getLogger(__name__)
+_channel = None
+
+T = TypeVar('T')
 
 
-def get_channel() -> AbstractChannel:
-    channel = Channel()
-    logger.info("setting up channel")
-    setup_channel(channel)
-    return channel
+def set_channel(channel: base.BaseChannel):
+    global _channel
+    _channel = channel
+
+
+set_channel(get_channel())
+
+
+def _get_channel():
+    return _channel
+
+
+def register(producer: base.Producer[T], topic_class: Type[base.Topic[T]]):
+    channel = _get_channel()
+    assert channel
+    channel.register(producer, topic_class)
+
+
+def subscribe(subscriber: base.Consumer[T], topic_class: Type[base.Topic[T]]):
+    channel = _get_channel()
+    assert channel
+    channel.subscribe(subscriber, topic_class)

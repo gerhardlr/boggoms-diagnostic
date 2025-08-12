@@ -1,4 +1,0 @@
-
-from ._subscribers.handle_request_subscriber import HandleRequestSubscriberPerSource
-
-handleRequestSubscriber = HandleRequestSubscriberPerSource()

@@ -2,12 +2,11 @@
 
 from fastapi import FastAPI
 
+from helpers import get_root
 from helpers.logging_config import get_logging_config
 from helpers.db import get_db
 from helpers.data_types import Event
 
-
-from helpers import config
 
 app = FastAPI()
 
@@ -15,14 +14,11 @@ logging_config = get_logging_config()
 logger = logging_config.getLogger(__name__)
 
 
-
-
-
 @app.post("/api/")
 def post_event(event: Event):
-    channel = config.get_channel()
+    root = get_root()
     logger.info(f'pushing event{event}')
-    return channel.consume(event)
+    return root.push(event)
 
 
 @app.get("/api/")
